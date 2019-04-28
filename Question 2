@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - MA04 - Question 2</title>
+    </head>
+<body>
+
+<!-- Create a list of TODO cards using the API -->
+<div class="[ container ]">
+    <div class="[ information ]" id="todoList">
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+// JavaScript
+
+fetch('https://jsonplaceholder.typicode.com/todos/format=json')
+.then(result => result.json())
+.then((res) => {
+    createList(res);
+})
+.catch(err => console.log(err))
+
+
+function createList(result) {
+    var details = document.getElementById("todoList");
+    details.innerHTML += "<span>UserId: " + result.userId + "</span>";
+    details.innerHTML += "<span>Id: " + result.id + "</span>";
+    details.innerHTML += "<span>Title: " + result.title + "</span>";
+    details.innerHTML += "<span>Completed: " + result.completed + "</span>";
+}
